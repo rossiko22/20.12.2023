@@ -1,0 +1,53 @@
+import java.io.*;
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		try {
+			InputStreamReader isr = new InputStreamReader(System.in);
+			BufferedReader input = new BufferedReader(isr);
+			
+			System.out.print("Enter the number of rows: ");
+	        int rows = Integer.parseInt(input.readLine());
+
+	        System.out.print("Enter the number of columns: ");
+	        int cols = Integer.parseInt(input.readLine());
+	        
+	        int[][] matrix = new int[rows][cols];
+	        
+	        int sum = 0;
+	        
+	        
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    try {
+                        System.out.println("Enter the element at [" + i + "][" + j +"]");
+                        matrix[i][j] = Integer.parseInt(input.readLine());
+                        sum += matrix[i][j];
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter an integer.");
+                        j--;
+                    }
+                }
+            }
+			
+            double average = (double) sum / (rows * cols);
+            
+            System.out.println("\nElements of the array:");
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    System.out.println("el.  [" + i + "][" + j + "] = 	" + matrix[i][j] + " ");
+                }
+            }
+            System.out.println("The sum is " + sum);
+            System.out.println("The average is " + average);
+
+            
+            
+		}catch(IOException e) {
+			System.out.println("An exception has occured");
+		}
+	}
+
+}
